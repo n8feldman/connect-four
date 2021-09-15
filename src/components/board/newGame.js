@@ -1,10 +1,10 @@
 import React from 'react'
-import withRouter from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-import Button from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
-import createBoard from './../../api/boardAuth'
-import emptyBoard from './gameLogic'
+import { createBoard } from './../../api/boardAuth'
+import { emptyBoard } from './gameLogic'
 
 class NewGame extends React.Component {
   newGame = () => {

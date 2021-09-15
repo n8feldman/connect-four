@@ -1,7 +1,7 @@
 import React from 'react'
-import withRouter from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-import Button from 'react-bootstrap/Form'
+import { Button } from 'react-bootstrap'
 
 import { oneBoard, deleteBoard } from './../../api/boardAuth'
 
