@@ -1,0 +1,230 @@
+.game-form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.board {
+  position: relative;
+  width: 450px;
+  height: 450px;
+}
+
+.field {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  padding: 75px 0 0 0;
+  box-sizing: border-box;
+  width: 420px;
+  height: 435px;
+  overflow: hidden;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: inline-flex;
+  flex-flow: column wrap;
+  position: relative;
+  min-width: 420px;
+  height: 360px;
+  counter-reset: player 1;
+}
+
+.column {
+  display: inline-flex;
+  flex-flow: column wrap;
+  height: 360px;
+}
+
+.front {
+  position: absolute;
+  top: 60px;
+  border: 15px solid #007fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 450px;
+  height: 390px;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent, transparent 18px, #007fff 20px, #007fff 23px, #1f90ff 23px, #1f90ff 36px, #007fff) center top/60px 60px;
+}
+
+/* Invisible .piece-inputs */
+.piece-input {
+  display: none;
+  position: absolute;
+  top: -90px;
+  margin: 0;
+  width: 60px;
+  height: 450px;
+  cursor: pointer;
+  opacity: 0;
+}
+.piece-input:indeterminate {
+  display: initial;
+}
+/* .piece-inputs for red */
+.column > .piece-input:nth-of-type(2n) {
+  right: 360px;
+}
+.column > .column > .piece-input:nth-of-type(2n) {
+  right: 300px;
+}
+.column > .column > .column > .piece-input:nth-of-type(2n) {
+  right: 240px;
+}
+.column > .column > .column > .column > .piece-input:nth-of-type(2n) {
+  right: 180px;
+}
+.column > .column > .column > .column > .column > .piece-input:nth-of-type(2n) {
+  right: 120px;
+}
+.column > .column > .column > .column > .column > .column > .piece-input:nth-of-type(2n) {
+  right: 60px;
+}
+.column > .column > .column > .column > .column > .column > .column > .piece-input:nth-of-type(2n) {
+  right: 0;
+}
+/* .piece-inputs for yellow */
+.column > .piece-input:nth-of-type(2n+1) {
+  left: 0;
+}
+.column > .column > .piece-input:nth-of-type(2n+1) {
+  left: 60px;
+}
+.column > .column > .column > .piece-input:nth-of-type(2n+1) {
+  left: 120px;
+}
+.column > .column > .column > .column > .piece-input:nth-of-type(2n+1) {
+  left: 180px;
+}
+.column > .column > .column > .column > .column > .piece-input:nth-of-type(2n+1) {
+  left: 240px;
+}
+.column > .column > .column > .column > .column > .column > .piece-input:nth-of-type(2n+1) {
+  left: 300px;
+}
+.column > .column > .column > .column > .column > .column > .column > .piece-input:nth-of-type(2n+1) {
+  left: 360px;
+}
+
+/* Disc */
+.disc {
+  position: relative;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  background: radial-gradient(circle, currentcolor 12px, #666 13px, currentcolor 14px, currentcolor 21px, #666 22px, transparent 23px, transparent) center/60px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, top 0s 0.2s, color 0s 0.2s;
+}
+
+/* Red's turn */
+.piece-input:hover + .disc {
+  color: #ff010b;
+  opacity: 1;
+  transition: opacity 0.2s, top 0s;
+}
+.piece-input:checked + .disc {
+  color: #ff010b;
+  opacity: 1;
+}
+/* Yellow's turn */
+.piece-input:hover + .piece-input + .disc {
+  color: #ffd918;
+  opacity: 1;
+  transition: opacity 0.2s, top 0s;
+}
+.piece-input:checked + .piece-input + .disc {
+  color: #ffd918;
+  opacity: 1;
+}
+
+/* Height and time of disc fall per row */
+.piece-input:hover + .disc:nth-of-type(1),
+.piece-input:hover + .piece-input + .disc:nth-of-type(1){
+  top: -75px;
+}
+.piece-input:checked + .disc:nth-of-type(1),
+.piece-input:checked + .piece-input + .disc:nth-of-type(1){
+  transition: top 0.14s cubic-bezier(0.56, 0, 1, 1);
+}
+.piece-input:hover + .disc:nth-of-type(2),
+.piece-input:hover + .piece-input + .disc:nth-of-type(6n+2) {
+  top: -135px;
+}
+.piece-input:checked + .disc:nth-of-type(2),
+.piece-input:checked + .piece-input + .disc:nth-of-type(2){
+  transition: top 0.19s cubic-bezier(0.56, 0, 1, 1);
+}
+.piece-input:hover + .disc:nth-of-type(3),
+.piece-input:hover + .piece-input + .disc:nth-of-type(3) {
+  top: -195px;
+}
+.piece-input:checked + .disc:nth-of-type(3),
+.piece-input:checked + .piece-input + .disc:nth-of-type(3) {
+  transition: top 0.23s cubic-bezier(0.56, 0, 1, 1);
+}
+.piece-input:hover + .disc:nth-of-type(4),
+.piece-input:hover + .piece-input + .disc:nth-of-type(4) {
+  top: -255px;
+}
+.piece-input:checked + .disc:nth-of-type(4),
+.piece-input:checked + .piece-input + .disc:nth-of-type(4) {
+  transition: top 0.26s cubic-bezier(0.56, 0, 1, 1);
+}
+.piece-input:hover + .disc:nth-of-type(5),
+.piece-input:hover + .piece-input + .disc:nth-of-type(5){
+  top: -315px;
+}
+.piece-input:checked + .disc:nth-of-type(5),
+.piece-input:checked + .piece-input + .disc:nth-of-type(5){
+  transition: top 0.29s cubic-bezier(0.56, 0, 1, 1);
+}
+.piece-input:hover + .disc:nth-of-type(6n),
+.piece-input:hover + .piece-input + .disc:nth-of-type(6n) {
+  top: -375px;
+}
+.piece-input:checked + .disc:nth-of-type(6n),
+.piece-input:checked + .piece-input + .disc:nth-of-type(6n) {
+  transition: top 0.32s cubic-bezier(0.56, 0, 1, 1);
+}
+
+/* Fix stuck disc */
+.piece-input:checked + .disc,
+.piece-input:checked + .piece-input + .disc {
+  top: 0 !important;
+}
+
+/* Tracking turns */
+.piece-input:checked + .disc {
+  counter-increment: player 2;
+}
+.piece-input:checked + .piece-input + .disc {
+  counter-increment: player -2;
+}
+
+.grid::after {
+  content: counter(player, lower-roman);
+  display: inline-block;
+  max-width: 840px;
+  min-width: 420px;
+  letter-spacing: 375px;
+  font-family: monospace;
+  font-size: 1px;
+  overflow: hidden;
+}
+
+@keyframes outcome {
+  0% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
