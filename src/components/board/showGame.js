@@ -7,6 +7,8 @@ import { oneBoard, deleteBoard, updateBoard } from './../../api/boardAuth'
 
 import Board from './board'
 
+import { makeMove } from './gameLogic'
+
 class ShowGame extends React.Component {
   constructor (props) {
     super(props)
@@ -51,11 +53,24 @@ class ShowGame extends React.Component {
   }
 
   handleChange = (event) => {
-    console.log(event)
-    const updatedMoves = []
+    const nextMove = this.state.nextMove
+    const updatedMoves = makeMove(this.state.board.moves, event.target.name, nextMove)
     updateBoard(this.props.user, this.props.match.params.id, updatedMoves)
-      .then()
-      .catch()
+      .then((res) =>
+        this.setState({
+          board: {
+            moves: updatedMoves
+          },
+          nextMove: nextMove + 1
+        })
+      )
+      .catch((err) =>
+        this.props.msgAlert({
+          heading: 'Update failed',
+          message: 'Something went wrong: ' + err.message,
+          variant: 'danger'
+        })
+      )
   }
 
   render () {
