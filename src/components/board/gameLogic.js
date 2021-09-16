@@ -1,10 +1,14 @@
 export const emptyBoard = () => {
   const newBoard = []
-  for (let i = 0; i < 7; i++) {
-    newBoard[i] = [0, 0, 0, 0, 0, 0]
+  for (let i = 0; i < 6; i++) {
+    newBoard[i] = [0, 0, 0, 0, 0, 0, 0]
   }
   return newBoard
   // return Array(42).fill(0)
+}
+
+export const updateBoard = (oldBoard, cellName) => {
+  
 }
 
 // Utility function that converts a 7x6 board into a 42-number array for Mongoose backend

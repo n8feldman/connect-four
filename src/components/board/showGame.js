@@ -3,7 +3,9 @@ import { withRouter } from 'react-router-dom'
 
 import { Button } from 'react-bootstrap'
 
-import { oneBoard, deleteBoard } from './../../api/boardAuth'
+import { oneBoard, deleteBoard, updateBoard } from './../../api/boardAuth'
+
+import Board from './board'
 
 class ShowGame extends React.Component {
   constructor (props) {
@@ -11,17 +13,21 @@ class ShowGame extends React.Component {
     this.state = {
       board: {
         moves: []
-      }
+      },
+      nextMove: 1
     }
   }
 
   componentDidMount () {
     oneBoard(this.props.user, this.props.match.params.id)
-      .then(res => this.setState({
-        board: {
-          moves: res.data.board.moves
-        }
-      }))
+      .then((res) =>
+        this.setState({
+          board: {
+            moves: res.data.board.moves
+          },
+          nextMove: 1
+        })
+      )
       .catch((error) => {
         this.props.msgAlert({
           heading: 'Cannot show this game',
@@ -31,7 +37,7 @@ class ShowGame extends React.Component {
       })
   }
 
-  destroy = boardId => {
+  destroy = (boardId) => {
     const { user, msgAlert, history } = this.props
     deleteBoard(user, boardId)
       .then(history.push('/new-game'))
@@ -44,10 +50,24 @@ class ShowGame extends React.Component {
       )
   }
 
+  handleChange = (event) => {
+    console.log(event)
+    const updatedMoves = []
+    updateBoard(this.props.user, this.props.match.params.id, updatedMoves)
+      .then()
+      .catch()
+  }
+
   render () {
     return (
       <>
-        <div>{this.state.board.moves}</div>
+        <div>{this.state.board.moves[0]}</div>
+        <div>{this.state.board.moves[1]}</div>
+        <div>{this.state.board.moves[2]}</div>
+        <div>{this.state.board.moves[3]}</div>
+        <div>{this.state.board.moves[4]}</div>
+        <div>{this.state.board.moves[5]}</div>
+        <Board handleChange={this.handleChange} />
         <Button onClick={() => this.destroy(this.props.match.params.id)}>Delete this game</Button>
       </>
     )

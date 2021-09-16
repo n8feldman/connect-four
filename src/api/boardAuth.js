@@ -35,3 +35,18 @@ export const deleteBoard = (user, boardId) => {
     }
   })
 }
+
+export const updateBoard = (user, boardId, boardData) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/boards/' + boardId,
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    },
+    data: {
+      board: {
+        moves: boardData
+      }
+    }
+  })
+}
