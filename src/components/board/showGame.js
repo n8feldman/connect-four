@@ -53,6 +53,8 @@ class ShowGame extends React.Component {
   }
 
   handleChange = (event) => {
+    console.log(event)
+    // event.preventDefault()
     const nextMove = this.state.nextMove
     const updatedMoves = makeMove(this.state.board.moves, event.target.name, nextMove)
     updateBoard(this.props.user, this.props.match.params.id, updatedMoves)
@@ -64,13 +66,10 @@ class ShowGame extends React.Component {
           nextMove: nextMove + 1
         })
       )
-      .catch((err) =>
-        this.props.msgAlert({
-          heading: 'Update failed',
-          message: 'Something went wrong: ' + err.message,
-          variant: 'danger'
-        })
-      )
+      .catch((err) => {
+        event.preventDefault()
+        this.props.msgAlert({ heading: 'Update failed', message: 'Something went wrong: ' + err.message, variant: 'danger' })
+      })
   }
 
   render () {
