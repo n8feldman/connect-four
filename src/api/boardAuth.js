@@ -10,7 +10,7 @@ export const createBoard = (user, boardData) => {
     },
     data: {
       board: {
-        moves: boardData.moves
+        moves: boardData
       }
     }
   })

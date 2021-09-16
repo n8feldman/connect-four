@@ -11,7 +11,7 @@ class NewGame extends React.Component {
     const { user, msgAlert, history } = this.props
     const gameBoard = emptyBoard()
     createBoard(user, gameBoard)
-      .then(res => history.push(`/boards/${res.board._id}`))
+      .then(res => history.push(`/games/${res.data.board._id}`))
       .catch(error => {
         msgAlert({
           heading: 'Cannot create a new game',

@@ -10,7 +10,7 @@ class ShowGame extends React.Component {
     super(props)
     this.state = {
       board: {
-        moves: null
+        moves: []
       }
     }
   }
@@ -47,7 +47,7 @@ class ShowGame extends React.Component {
   render () {
     return (
       <>
-        {this.state.moves}
+        <p>{this.state.board.moves}</p>
         <Button onClick={() => this.destroy(this.props.match.params.id)}>Delete this game</Button>
       </>
     )
