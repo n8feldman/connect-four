@@ -47,7 +47,7 @@ class ShowGame extends React.Component {
   render () {
     return (
       <>
-        <p>{this.state.board.moves}</p>
+        <div>{this.state.board.moves}</div>
         <Button onClick={() => this.destroy(this.props.match.params.id)}>Delete this game</Button>
       </>
     )
