@@ -67,7 +67,7 @@ class ShowGame extends React.Component {
         })
       )
       .catch((err) => {
-        event.preventDefault()
+        event.target.checked = false
         this.props.msgAlert({ heading: 'Update failed', message: 'Something went wrong: ' + err.message, variant: 'danger' })
       })
   }
