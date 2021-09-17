@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/connect-four/static/css/main.e3127979.chunk.css",
-    "main.js": "/connect-four/static/js/main.c91df77e.chunk.js",
-    "main.js.map": "/connect-four/static/js/main.c91df77e.chunk.js.map",
+    "main.js": "/connect-four/static/js/main.dd364e66.chunk.js",
+    "main.js.map": "/connect-four/static/js/main.dd364e66.chunk.js.map",
     "runtime-main.js": "/connect-four/static/js/runtime-main.f2b56136.js",
     "runtime-main.js.map": "/connect-four/static/js/runtime-main.f2b56136.js.map",
     "static/js/2.b7371583.chunk.js": "/connect-four/static/js/2.b7371583.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.f2b56136.js",
     "static/js/2.b7371583.chunk.js",
     "static/css/main.e3127979.chunk.css",
-    "static/js/main.c91df77e.chunk.js"
+    "static/js/main.dd364e66.chunk.js"
   ]
 }
