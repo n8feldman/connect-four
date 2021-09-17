@@ -38,7 +38,7 @@ class PrevGames extends React.Component {
           <Card.Body>
             <Card.Title>{board._id}</Card.Title>
             <Card.Text>Nothing here yet.</Card.Text>
-            <Button onClick={() => console.log('here')}>View Game</Button>
+            <Button onClick={() => this.props.history.push(`/games/${board._id}`)}>View Game</Button>
           </Card.Body>
         </Card>
       ))
