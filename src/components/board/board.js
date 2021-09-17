@@ -2,6 +2,13 @@ import React from 'react'
 import './boardStyles.css'
 
 class Board extends React.Component {
+  // we have an array of 6 columns "moves"
+  // function maps column into six input-input-disc "items", check off inputs when valid
+  // Take those seven columns, put another <div> which starts the next column either before or after it
+  // Make sure closing tags are handled properly
+  // return a JSX object
+  // in the render() function put that JSX object in the code
+
   render () {
     return (
       <>

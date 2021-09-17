@@ -1,7 +1,7 @@
 export const emptyBoard = () => {
   const newBoard = []
-  for (let i = 0; i < 6; i++) {
-    newBoard[i] = [0, 0, 0, 0, 0, 0, 0]
+  for (let i = 0; i < 7; i++) {
+    newBoard[i] = [0, 0, 0, 0, 0, 0]
   }
   return newBoard
   // return Array(42).fill(0)
@@ -10,13 +10,13 @@ export const emptyBoard = () => {
 export const makeMove = (oldBoard, cellName, moveNum) => {
   const row = Number(cellName.charAt(5)) - 1
   const col = Number(cellName.charAt(4)) - 1
-  const newBoard = [[], [], [], [], [], []]
+  const newBoard = [[], [], [], [], [], [], []]
   for (let i = 0; i < oldBoard.length; i++) {
     for (let j = 0; j < oldBoard[i].length; j++) {
       newBoard[i][j] = oldBoard[i][j]
     }
   }
-  newBoard[row][col] = moveNum
+  newBoard[col][row] = moveNum
   return newBoard
 }
 
