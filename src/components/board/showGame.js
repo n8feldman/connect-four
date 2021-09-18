@@ -27,7 +27,7 @@ class ShowGame extends React.Component {
           board: {
             moves: res.data.board.moves
           },
-          nextMove: 1
+          nextMove: Math.max(...res.data.board.moves.flat()) + 1
         })
       )
       .catch((error) => {
