@@ -12,6 +12,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import NewGame from './components/board/newGame'
 import ShowGame from './components/board/showGame'
+import PrevGames from './components/board/prevGames'
 
 class App extends Component {
   constructor (props) {
@@ -97,6 +98,11 @@ class App extends Component {
             user={user}
             path='/games/:id'
             render={() => <ShowGame msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/games'
+            render={() => <PrevGames msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>
