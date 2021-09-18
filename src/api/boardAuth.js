@@ -26,6 +26,16 @@ export const oneBoard = (user, boardId) => {
   })
 }
 
+export const indexBoards = (user) => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/boards',
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
+
 export const deleteBoard = (user, boardId) => {
   return axios({
     method: 'DELETE',
