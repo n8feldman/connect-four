@@ -7,14 +7,15 @@ import { oneBoard, deleteBoard, updateBoard } from './../../api/boardAuth'
 
 import Board from './board'
 
-import { makeMove } from './gameLogic'
+import { makeMove, checkWinner } from './gameLogic'
 
 class ShowGame extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       board: {
-        moves: []
+        moves: [],
+        winner: null
       },
       nextMove: 1
     }
@@ -25,7 +26,8 @@ class ShowGame extends React.Component {
       .then((res) =>
         this.setState({
           board: {
-            moves: res.data.board.moves
+            moves: res.data.board.moves,
+            winner: res.data.board.gameOver
           },
           nextMove: Math.max(...res.data.board.moves.flat()) + 1
         })
@@ -57,6 +59,7 @@ class ShowGame extends React.Component {
     // event.preventDefault()
     const nextMove = this.state.nextMove
     const updatedMoves = makeMove(this.state.board.moves, event.target.name, nextMove)
+    const updatedWinner = checkWinner(updatedMoves)
     const newBoard = {
       moves: updatedMoves
     }
@@ -65,7 +68,8 @@ class ShowGame extends React.Component {
       .then(() =>
         this.setState({
           board: {
-            moves: updatedMoves
+            moves: updatedMoves,
+            winner: updatedWinner // also check if game is over, add variable to state
           },
           nextMove: nextMove + 1
         })
@@ -87,6 +91,7 @@ class ShowGame extends React.Component {
         <div>{this.state.board.moves[5]}</div>
         <div>{this.state.board.moves[6]}</div>
         <Board handleChange={this.handleChange} moves={this.state.board.moves}/>
+        <h1>Congratulations! The winner is {this.state.board.winner}.</h1>
         <Button onClick={() => this.destroy(this.props.match.params.id)}>Delete this game</Button>
       </>
     )
