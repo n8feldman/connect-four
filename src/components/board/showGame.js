@@ -61,7 +61,8 @@ class ShowGame extends React.Component {
     const updatedMoves = makeMove(this.state.board.moves, event.target.name, nextMove)
     const updatedWinner = checkWinner(updatedMoves)
     const newBoard = {
-      moves: updatedMoves
+      moves: updatedMoves,
+      winner: updatedWinner
     }
     updateBoard(this.props.user, this.props.match.params.id, newBoard)
       .then(res => console.log(res))
@@ -81,6 +82,17 @@ class ShowGame extends React.Component {
   }
 
   render () {
+    let winnerJsx = null
+    const winner = this.state.board.winner
+    if (winner) {
+      if (winner === 'red') {
+        winnerJsx = <h1>Congratulations! The winner is <span style={{ color: 'red' }}>{this.state.board.winner}</span>.</h1>
+      } else if (winner === 'yellow') {
+        winnerJsx = <h1>Congratulations! The winner is <span style={{ color: 'yellow' }}>{this.state.board.winner}</span>.</h1>
+      } else if (winner === 'draw') {
+        winnerJsx = <h1>The game is drawn. Nobody is a winner!</h1>
+      }
+    }
     return (
       <>
         <div>{this.state.board.moves[0]}</div>
@@ -91,7 +103,7 @@ class ShowGame extends React.Component {
         <div>{this.state.board.moves[5]}</div>
         <div>{this.state.board.moves[6]}</div>
         <Board handleChange={this.handleChange} moves={this.state.board.moves}/>
-        <h1>Congratulations! The winner is {this.state.board.winner}.</h1>
+        {winnerJsx}
         <Button onClick={() => this.destroy(this.props.match.params.id)}>Delete this game</Button>
       </>
     )
