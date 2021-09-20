@@ -57,8 +57,12 @@ class ShowGame extends React.Component {
     // event.preventDefault()
     const nextMove = this.state.nextMove
     const updatedMoves = makeMove(this.state.board.moves, event.target.name, nextMove)
-    updateBoard(this.props.user, this.props.match.params.id, updatedMoves)
-      .then((res) =>
+    const newBoard = {
+      moves: updatedMoves
+    }
+    updateBoard(this.props.user, this.props.match.params.id, newBoard)
+      .then(res => console.log(res))
+      .then(() =>
         this.setState({
           board: {
             moves: updatedMoves

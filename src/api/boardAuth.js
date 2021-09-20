@@ -54,9 +54,7 @@ export const updateBoard = (user, boardId, boardData) => {
       Authorization: `Bearer ${user.token}`
     },
     data: {
-      board: {
-        moves: boardData
-      }
+      board: boardData
     }
   })
 }
