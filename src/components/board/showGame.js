@@ -95,13 +95,6 @@ class ShowGame extends React.Component {
     }
     return (
       <>
-        <div>{this.state.board.moves[0]}</div>
-        <div>{this.state.board.moves[1]}</div>
-        <div>{this.state.board.moves[2]}</div>
-        <div>{this.state.board.moves[3]}</div>
-        <div>{this.state.board.moves[4]}</div>
-        <div>{this.state.board.moves[5]}</div>
-        <div>{this.state.board.moves[6]}</div>
         <Board handleChange={this.handleChange} moves={this.state.board.moves}/>
         {winnerJsx}
         <Button onClick={() => this.destroy(this.props.match.params.id)}>Delete this game</Button>
